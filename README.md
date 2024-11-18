@@ -1,3 +1,7 @@
+Juwon Hong
+CIS 25
+17/11/2024
+
 For Project 2, the 'Student Attendance Management System' enables users to perform essential tasks, including student registration and removal, attendance record updates, and checking individual students' attendance status. Additionally, the program offers the capability to save and load student information and attendance data, facilitating seamless, ongoing data management.
 
 1. Arrays and vectors: This function manages student information and attendance records, utilizing efficient data structures to organize and manipulate the student list. This design supports storing and quickly retrieving information for a large number of students.
