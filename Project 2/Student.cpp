@@ -10,13 +10,14 @@
 #include <fstream>
 #include <sstream>
 
-std::vector<Student> students; // Vector to manage the student list
+std::vector<Student> students; 
 
+// Adds a new student to the list
 void addStudent(int id, const std::string& name) {
     students.push_back({id, name, {}});
     std::cout << "Student added: " << name << " (ID: " << id << ")\n";
 }
-
+// Marks attendance for a specific student on a given date
 void markAttendance(int id, const std::string& date) {
     for (auto& student : students) {
         if (student.id == id) {
@@ -27,7 +28,7 @@ void markAttendance(int id, const std::string& date) {
     }
     std::cout << "No student found with that ID.\n";
 }
-
+// Displays attendance records for a specific student
 void showAttendance(int id) {
     for (const auto& student : students) {
         if (student.id == id) {
@@ -46,7 +47,7 @@ void showAttendance(int id) {
     }
     std::cout << "No student found with that ID.\n";
 }
-
+// Saves all student data to a file
 void saveToFile(const std::string& filename) {
     std::ofstream file(filename);
     if (file.is_open()) {
@@ -63,7 +64,7 @@ void saveToFile(const std::string& filename) {
         std::cout << "Unable to open file.\n";
     }
 }
-
+// Loads student data from a file
 void loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -74,14 +75,16 @@ void loadFromFile(const std::string& filename) {
             std::string name, dates;
             std::stringstream ss(line);
             std::string idStr;
+            // Parse the ID, name, and attendance dates
             getline(ss, idStr, ',');
             id = std::stoi(idStr);
             getline(ss, name, ',');
             getline(ss, dates);
-
+             // Create a new Student struct
             Student student = {id, name, {}};
             std::stringstream dateStream(dates);
             std::string date;
+            // Split the attendance dates and add them to the student
             while (dateStream >> date) {
                 student.attendance.push_back(date);
             }
